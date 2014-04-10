@@ -26,7 +26,7 @@ Usage
 
 Run NanoBot.py::
 
-    $ python NanoBot.py
+    $ python NanoBot
 
 	
 To do
