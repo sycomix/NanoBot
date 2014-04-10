@@ -23,7 +23,7 @@ class NanoLogic():
 		# file exist/write verification
 
 		# Change path so that relative paths work
-		current_orig_path = os.getcwd()
+		current_path = os.getcwd()
 		bot_root_path = os.path.dirname(os.path.realpath(__file__))
 		if current_path != bot_root_path:
 			os.chdir(bot_root_path)
