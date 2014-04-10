@@ -5,8 +5,6 @@ import os
 
 
 
-
-
 class NanoLogic():
 
 	def __init__(self, bot_name, bot_master, brain_file, std_startup_file, default_load_command):	
@@ -22,21 +20,8 @@ class NanoLogic():
 		# and need a separate save_brain function
 		# file exist/write verification
 
-		# Change path so that relative paths work
-		current_path = os.getcwd()
-		bot_root_path = os.path.dirname(os.path.realpath(__file__))
-		if current_path != bot_root_path:
-			os.chdir(bot_root_path)
-
-		if os.path.isfile(brain_file):
-		    self.aimlk.bootstrap(brainFile = brain_file)
-		else:
-		    self.aimlk.bootstrap(learnFiles = std_startup_file, commands = default_load_command)
-		    self.aimlk.saveBrain(brain_file)
-
-		# Change path back to orig path or else will mess up things later
-		os.chdir(current_path) 
-
+		self.reload(default_load_command, brain_file, std_startup_file)
+		
 
 
 
@@ -44,3 +29,22 @@ class NanoLogic():
 	# Use separate sessions based on from name
 	def aiml_process(self, msg):
 		return self.aimlk.respond(msg['body'], msg['from'].bare) 
+
+
+
+	def reload(self, load_command, brain_file, std_startup_file, force=False):
+		# Change path so that relative paths work in std-startup.xml
+		current_path = os.getcwd()
+		bot_root_path = os.path.dirname(os.path.realpath(__file__))
+		if current_path != bot_root_path:
+			os.chdir(bot_root_path)
+
+		if os.path.isfile(brain_file) and force == False:
+		    self.aimlk.bootstrap(brainFile = brain_file)
+		else:
+		    self.aimlk.bootstrap(learnFiles = std_startup_file, commands = load_command)
+		    self.aimlk.saveBrain(brain_file)
+		    print "Saving"
+
+		# Change path back to orig path or else will mess up things later
+		os.chdir(current_path) 

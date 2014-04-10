@@ -9,6 +9,7 @@ from NanoLogic import *     # Command/text processing, AIML logic
 from NanoXMPP import *      # Handle chat server, messages, presence
 
 
+
 # Global config vars
 bot_name = "NanoBot"
 bot_master = ""
@@ -16,15 +17,6 @@ bot_cmd_prefix = "nano " # Triggers a preprocess command in message process
 brain_file = "brains/standard.brn"
 std_startup_file = "std-startup.xml"
 default_load_command = "load aiml b"
-
-
-# Global stuff
-# Enforce UTF-8
-if sys.version_info < (3, 0):
-    reload(sys)
-    sys.setdefaultencoding('utf8')
-else:
-    raw_input = input
 
 
 
@@ -38,18 +30,21 @@ class NanoBot():
         # Set config information
         self.bot_name = bot_name
         self.bot_master = bot_master
-        self.brain_file = brain_file
-        self.std_startup_file = std_startup_file
         self.default_load_command = default_load_command
         self.bot_cmd_prefix = bot_cmd_prefix
+        self.brain_file = brain_file
+        self.std_startup_file = std_startup_file
 
         # Activate LPU component to handle AI - Slow - do before XMPP
-        self.lpu = NanoLogic(self.bot_name, self.bot_master, self.brain_file, self.std_startup_file, self.bot_cmd_prefix)
+        self.lpu = NanoLogic(self.bot_name, self.bot_master, self.brain_file, self.std_startup_file, self.default_load_command)
 
         # Activate XMPP component and hand over control to XMPP stanza processing
         self.xmpp = NanoXMPP(self.opts.jid, self.opts.password, self.opts.room, self.opts.nick)
 
-        #Set up XMPP 
+
+
+    def run(self):
+        # Connect XMPP, set event handlers, and hand off control for rest of program
         if self.xmpp.connect((self.opts.host, self.opts.port)):
             # Set up event handlers   
             self.xmpp.add_event_handler("message", self.process_message)
@@ -58,10 +53,9 @@ class NanoBot():
             self.xmpp.add_event_handler("muc::%s::got_online" % self.xmpp.room,
                                    self.muc_online)
             # Process stanzas - never returns control
-            self.xmpp.process(block=True)
-            
+            self.xmpp.process(block=True) 
         else:
-            print("Unable to connect.")
+            print("Unable to connect to " + self.host + ":" + self.port + ".")
 
 
 
@@ -135,8 +129,10 @@ class NanoBot():
 
         # reload - AIML files reload
         if command.upper() == "RELOAD":
-            msg.reply("Reloading AIML. This may take a minute.").send()
-            self.lpu.aimlk.respond("load aiml b")
+            tmpmsg = msg
+            tmpmsg.reply("Reloading AIML. This may take a minute.").send()
+            self.lpu.reload(self.default_load_command, self.brain_file, self.std_startup_file, True)
+            msg.reply("AIML files reloaded").send()
             return "AIML files reloaded."
 
         
