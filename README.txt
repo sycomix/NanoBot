@@ -9,17 +9,14 @@ Installation
 
 Run in terminal::
 
-Install SleekXMPP dependency
-	$ sudo pip install sleekxmpp
+	$ sudo pip install sleekxmpp # Install SleekXMPP dependency
 	
-Install PyAIML dependency
 	$ git clone git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml
 	$ cd pyaiml
-	$ python setup.py install 
+	$ python setup.py install # Install PyAIML dependency
 	
-Run nanobot
 	$ cd /path/to/NanoBot
-	$ python NanoBot.py
+	$ python NanoBot.py # Run NanoBot
 	
 
 Usage
