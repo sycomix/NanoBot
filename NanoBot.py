@@ -233,13 +233,3 @@ class NanoBot():
             self.opts.nick = raw_input("Nickname: ")
         if self.opts.room is None:
             self.opts.room = raw_input("MUC room (room@conference.example.com): ")
-
-
-
-# Main function when run on the command line
-if __name__ == '__main__':
-
-    """
-    Master entity that is the nano
-    """
-    nano = NanoBot()

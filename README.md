@@ -5,22 +5,24 @@ NanoBot
 
 
 Installation
-============
+-----
 
 Run in terminal::
 
+	$ git clone https://github.com/NanoDano/NanoBot
+	$ python NanoBot
+
+To install dependencies::
+	
 	$ sudo pip install sleekxmpp # Install SleekXMPP dependency
 	
 	$ git clone git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml
 	$ cd pyaiml
 	$ python setup.py install # Install PyAIML dependency
 	
-	$ cd /path/to/NanoBot
-	$ python NanoBot.py # Run NanoBot
-	
 
 Usage
-=====
+-----
 
 Run NanoBot.py::
 
@@ -28,7 +30,7 @@ Run NanoBot.py::
 
 	
 To do
-=====
+-----
 
 - Provide more robust brain file checking (exists, is writable, need updating?)
 - Store sessions to file
@@ -39,27 +41,26 @@ To do
 - help me at https://github.com/NanoDano/NanoBot
 
 Author
-======
+-----
 
 * NanoDano <nanodano@devdungeon.com>
 
 License
-=======
+-----
 
 * NanoBot is licensed under the *Do What The Fuck You Want to Public License*, WTFPL. See the LICENSE.txt file.
 
 
 
 Dependencies
-=========
-
+------
 SleekXMPP: http://sleekxmpp.com/
 PyAIML: http://pyaiml.sourceforge.net/
 
 
 
 Feature list / wish list
-=======
+-----
 10 second trivia
 who else are you talking to
 what have you learned today?
