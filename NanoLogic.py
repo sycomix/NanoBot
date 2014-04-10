@@ -14,8 +14,8 @@ class NanoLogic():
 		self.aimlk = aiml.Kernel()
 
 		# Name/owner settings
-		self.aimlk.setBotPredicate('name', bot_name)
-		self.aimlk.setBotPredicate('master', bot_master)
+		self.aimlk.setBotPredicate('name', self.bot_name)
+		self.aimlk.setBotPredicate('master', self.bot_master)
 
 		# Brain files can save startup time
 		# need a way to auto-update this if needed check_brain_updates
