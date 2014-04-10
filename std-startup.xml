@@ -1,0 +1,17 @@
+<aiml version="1.0">
+
+<!-- This category works with the Standard AIML Set -->
+<category>
+<pattern>LOAD AIML B</pattern>
+<template>
+
+<!-- Load standard AIML set -->
+<learn>aiml/nanobot-core.aiml</learn>
+<learn>aiml/alice/*</learn>
+<learn>aiml/sample/*</learn>
+
+
+</template>
+</category>
+
+</aiml>

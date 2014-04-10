@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<aiml version="1.0">
+
+<meta name="author" content="nanodano@devdungeon.com"/>
+<meta name="language" content="en"/>
+
+<category>
+	<pattern>A *</pattern>
+	<template>
+	<think><set name="it"><star/></set></think>
+	<random>
+		<li>Go on.</li>
+		<li>How old are you?</li>
+		<li>Be more specific.</li>
+		<li>I did not know that.</li>
+		<li>Are you telling the truth?</li>
+		<li>I don't know what that means.</li>
+		<li>Try to tell me that another way.</li>
+		<li>Are you talking about an animal, vegetable or mineral?</li>
+		<li>What is it?</li>
+	</random>
+	</template>
+</category>
+
+<category>
+	<pattern>TWO *</pattern>
+	<template>
+	<random>
+		<li>Don't be greedy now!</li>
+	</random>
+	</template>
+</category>
+
+<category>
+	<pattern>HELLO</pattern>
+	<template>
+	<random>
+		<li>Howdy</li>
+		<li>What's up?</li>
+		<li>Hello</li>
+		<li>Hi</li>
+	</random>
+	</template>
+</category>
+
+<category>
+	<pattern>HELLO *</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+
+<category>
+	<pattern>HI</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>HI *</pattern>
+	<template>
+		<srai>HI</srai>
+	</template>
+</category>
+
+
+<category>
+	<pattern>WHATS UP *</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>WHATS UP</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>WHATS UP *</pattern>
+	<template>
+		<srai>WHATS UP</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>HEY *</pattern>
+	<template>
+		<srai>HEY</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>HEY</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>YO</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>YO *</pattern>
+	<template>
+		<srai>YO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>SUP *</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>Y0</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>Y0 *</pattern>
+	<template>
+		<srai>YO</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>Y0 *</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+
+<category>
+	<pattern>MORNING</pattern>
+	<template>
+		Good Morning.
+	</template>
+</category>
+
+
+<category>
+	<pattern>* MORNING</pattern>
+	<template>
+		<srai>MORNING</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>MORNING *</pattern>
+	<template>
+		<srai>MORNING</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>MORNIN</pattern>
+	<template>
+		<srai>MORNING</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>HAIL *</pattern>
+	<template>
+		<srai>HAIL</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>HAIL</pattern>
+	<template>
+		<srai>HELLO</srai>
+	</template>
+</category>
+
+</aiml>
