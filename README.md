@@ -18,7 +18,7 @@ To install dependencies::
 	
 	$ git clone git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml
 	$ cd pyaiml
-	$ python setup.py install # Install PyAIML dependency
+	$ sudo python setup.py install # Install PyAIML dependency
 	
 
 Usage
