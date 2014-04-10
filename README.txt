@@ -1,45 +1,44 @@
-=====
 NanoBot
 =====
 
-**NanoBot** is a python XMPP and AIML bot framework /*with LAIML compiler*/
+**NanoBot** is a python XMPP and AIML bot framework
+
 
 Installation
 ============
 
 Run in terminal::
 
-    $ # Install SleekXMPP dependency
+Install SleekXMPP dependency
 	$ sudo pip install sleekxmpp
 	
-	$ #Install PyAIML dependency
+Install PyAIML dependency
 	$ git clone git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml
 	$ cd pyaiml
 	$ python setup.py install 
 	
-	$ # Run nanobot
+Run nanobot
 	$ cd /path/to/NanoBot
-	$ ./nanobot
-	
-	
+	$ python NanoBot.py
 	
 
 Usage
 =====
 
-Run in a single command::
+Run NanoBot.py::
 
-    $ nanobot -j jid -h -etc -p `cat pass.txt`
+    $ python NanoBot.py
 
+	
 To do
 =====
 
 - Provide more robust brain file checking (exists, is writable, need updating?)
 - Store sessions to file
-- Add status prsence updates
-- Fix MUC
+- Add status presence updates
 - Add database logging
 - Integrate external data (db:topics, keywords)
+- Add AIML++ compiler - shorthand aiml generation
 - help me at https://github.com/NanoDano/NanoBot
 
 Author
@@ -54,7 +53,7 @@ License
 
 
 
-Dependencies:
+Dependencies
 =========
 
 SleekXMPP: http://sleekxmpp.com/
@@ -62,17 +61,8 @@ PyAIML: http://pyaiml.sourceforge.net/
 
 
 
-====
-misc notes
-=====
-NanoLogic - AIML Processing with response tokens for post-processing
-
-
-
-
-======================================================
 Feature list / wish list
-=====
+=======
 10 second trivia
 who else are you talking to
 what have you learned today?
@@ -80,7 +70,6 @@ private tells / store until online
 Link previewer: Link detected: Title: - mime/type + size
 most used words, word length, longest word, messages per day
 [my|user] link post history
-
 lmgtfy
 teach/learn command
 reddit bot
