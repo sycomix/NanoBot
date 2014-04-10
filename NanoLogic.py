@@ -3,13 +3,8 @@ import aiml
 import logging
 import os
 
-bot_name = "NanoBot"
-bot_master = "NanoDano"
 
-current_path = os.path.dirname(os.path.realpath(__file__)) + "/"
-brain_file = current_path + "brains/standard.brn"
-std_startup_file = current_path + "std-startup.xml"
-default_load_command = "load aiml b"
+
 
 
 class NanoLogic():
@@ -26,12 +21,21 @@ class NanoLogic():
 		# need a way to auto-update this if needed check_brain_updates
 		# and need a separate save_brain function
 		# file exist/write verification
+
+		# Change path so that relative paths work
+		current_orig_path = os.getcwd()
+		bot_root_path = os.path.dirname(os.path.realpath(__file__))
+		if current_path != bot_root_path:
+			os.chdir(bot_root_path)
+
 		if os.path.isfile(brain_file):
 		    self.aimlk.bootstrap(brainFile = brain_file)
 		else:
-
 		    self.aimlk.bootstrap(learnFiles = std_startup_file, commands = default_load_command)
 		    self.aimlk.saveBrain(brain_file)
+
+		# Change path back to orig path or else will mess up things later
+		os.chdir(current_path) 
 
 
 
