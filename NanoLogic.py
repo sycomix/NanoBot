@@ -9,13 +9,13 @@ import os
 
 class NanoLogic():
 
-	def __init__(self):	
+	def __init__(self, bot_name, bot_master):	
 		# Initialize AIML Kernel
 		self.aimlk = aiml.Kernel()
 
 		# Name/owner settings
-		self.aimlk.setBotPredicate('name', self.bot_name)
-		self.aimlk.setBotPredicate('master', self.bot_master)
+		self.aimlk.setBotPredicate('name', bot_name)
+		self.aimlk.setBotPredicate('master', bot_master)
 
 		# Brain files can save startup time
 		# need a way to auto-update this if needed check_brain_updates

@@ -37,10 +37,11 @@ class NanoBot():
 
         # Set config information
         self.bot_name = bot_name
+        self.bot_master = bot_master
         self.bot_cmd_prefix = bot_cmd_prefix
 
         # Activate LPU component to handle AI - Slow - do before XMPP
-        self.lpu = NanoLogic()
+        self.lpu = NanoLogic(self.bot_name, self.bot_master)
 
         # Activate XMPP component and hand over control to XMPP stanza processing
         self.xmpp = NanoXMPP(self.opts.jid, self.opts.password, self.opts.room, self.opts.nick)
