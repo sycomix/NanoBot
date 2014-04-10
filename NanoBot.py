@@ -103,7 +103,7 @@ class NanoBot():
 
     def token_replace(self, msg):
         # Replace tokens like [username], [get_weather], [ext plug]
-        print "Token replaceholder"
+        return
 
 
 

@@ -6,8 +6,9 @@ import os
 bot_name = "NanoBot"
 bot_master = "NanoDano"
 
-brain_file = "brains/standard.brn"
-std_startup_file = "std-startup.xml"
+current_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+brain_file = current_path + "brains/standard.brn"
+std_startup_file = current_path + "std-startup.xml"
 default_load_command = "load aiml b"
 
 
@@ -31,6 +32,7 @@ class NanoLogic():
 
 		    self.aimlk.bootstrap(learnFiles = std_startup_file, commands = default_load_command)
 		    self.aimlk.saveBrain(brain_file)
+
 
 
 
