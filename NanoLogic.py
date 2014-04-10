@@ -9,7 +9,7 @@ import os
 
 class NanoLogic():
 
-	def __init__(self, bot_name, bot_master):	
+	def __init__(self, bot_name, bot_master, brain_file, std_startup_file, default_load_command):	
 		# Initialize AIML Kernel
 		self.aimlk = aiml.Kernel()
 
