@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from NanoBot import *
 
 # Main function when run on the command line
