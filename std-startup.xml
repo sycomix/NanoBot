@@ -5,9 +5,9 @@
 <template>
 
 <!-- Load standard AIML set -->
-<learn>aiml/nanobot-core.aiml</learn>
-<learn>aiml/alice/*</learn>
-<learn>aiml/sample/*</learn>
+<learn>aiml_files/nanobot-core.aiml</learn>
+<learn>aiml_files/alice/*</learn>
+<learn>aiml_files/sample/*</learn>
 
 
 </template>
