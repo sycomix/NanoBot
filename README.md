@@ -12,19 +12,11 @@ Run in terminal::
 	$ git clone https://github.com/NanoDano/NanoBot
 	$ python NanoBot
 
-To install dependencies::
-	
-	$ sudo pip install sleekxmpp # Install SleekXMPP dependency
-	
-	$ git clone git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml
-	$ cd pyaiml
-	$ sudo python setup.py install # Install PyAIML dependency
-	
 
 Usage
 -----
 
-Run NanoBot.py::
+Run NanoBot::
 
     $ python NanoBot
 
@@ -52,7 +44,7 @@ License
 
 
 
-Dependencies
+Dependencies (included)
 ------
 SleekXMPP: http://sleekxmpp.com/
 PyAIML: http://pyaiml.sourceforge.net/
