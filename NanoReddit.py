@@ -49,12 +49,10 @@ class NanoReddit():
 
 
 	"""
-	Analyze a user's karma by subreddit
+	Analyze a user's karma
 	"""
-	def analyze_user(self):
-		print "Loading User"
-		user_name = raw_input("Username to analyze: ")
-		user = self.r.get_redditor(user_name)
+	def analyze_user_karma(self, username):
+		user = self.r.get_redditor(username)
 
 		thing_limit = 1000 
 		gen = user.get_comments(limit=thing_limit)
@@ -64,14 +62,16 @@ class NanoReddit():
 			karma_by_subreddit[subreddit] = (karma_by_subreddit.get(subreddit, 0)
 							+ thing.ups - thing.downs)
 
-		var_dump(karma_by_subreddit)
 		lowest = self.get_lowest(karma_by_subreddit)
-		print lowest[0]
-		print lowest[1]
-
 		highest = self.get_highest(karma_by_subreddit)
-		print highest[0]
-		print highest[1]
+		
+		output = "Reddit karma breakdown for " + username + "\n"
+		for subreddit, karma in karma_by_subreddit.iteritems():
+			output += subreddit + ": " + repr(karma) + "\n"
+		output += "===============\n"
+		output += "Lowest: " + lowest[0] + " (" + repr(lowest[1]) + ")\n"
+		output += "Highest: " + highest[0] + " (" + repr(highest[1]) + ")\n"
+		return output
 
 	
 
@@ -86,4 +86,5 @@ if __name__ == "__main__":
 	r = NanoReddit()
 
 	# Analyze User - get karma by subred, highest, lowest
-	r.analyze_user()
+	output = r.analyze_user_karma(raw_input("User to analyze: "))
+	print output

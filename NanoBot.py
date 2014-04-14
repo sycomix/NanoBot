@@ -7,7 +7,7 @@ from optparse import OptionParser
 
 from NanoLogic import *     # Command/text processing, AIML logic
 from NanoXMPP import *      # Handle chat server, messages, presence
-
+from NanoReddit import *
 
 
 # Global config vars
@@ -36,11 +36,14 @@ class NanoBot():
         self.std_startup_file = std_startup_file
 
         # Activate LPU component to handle AI - Slow - do before XMPP
-        self.lpu = NanoLogic(self.bot_name, self.bot_master, self.brain_file, self.std_startup_file, self.default_load_command)
+        #self.lpu = NanoLogic(self.bot_name, self.bot_master, self.brain_file, self.std_startup_file, self.default_load_command)
 
         # Activate XMPP component and hand over control to XMPP stanza processing
         self.xmpp = NanoXMPP(self.opts.jid, self.opts.password, self.opts.room, self.opts.nick)
 
+        # Activate Reddit bot component
+        self.reddit = NanoReddit()
+        self.reddit
 
 
     def run(self):
@@ -76,7 +79,7 @@ class NanoBot():
         if msg['type'] in ('chat', 'normal') and msg['from'].bare != self.xmpp.boundjid.bare:
             
             # Preprocess commands
-            # If string starts with self.bot_cmd_prefix or "HELP" treat as command 
+            # If string starts with self.bot_cmd_prefix or "HELP" treat as command             
             if msg['body'][:len(self.bot_cmd_prefix)] == self.bot_cmd_prefix or msg['body'].upper() == "HELP":
                response = False # Suppress response by default
                response = self.process_command(msg) # commands can return text, respond itself, or return False to return nothing
@@ -134,7 +137,6 @@ class NanoBot():
             self.lpu.reload(self.default_load_command, self.brain_file, self.std_startup_file, True)
             msg.reply("AIML files reloaded").send()
             return "AIML files reloaded."
-
         
 
         # Weather
@@ -152,6 +154,14 @@ class NanoBot():
             keywords = keywords.replace(" ", "%20")
             keywords = keywords.replace(":", "")
             return "Here is a link to the defition of " + raw_keywords + "  : http://www.merriam-webster.com/dictionary/" + keywords
+
+        # Reddit bot
+        if "REDDIT" in command.upper():
+            command = command.upper()
+            username = command.replace("REDDIT ", "")
+            output = self.reddit.analyze_user_karma(username)
+            return output
+
 
         return False # default return
 
