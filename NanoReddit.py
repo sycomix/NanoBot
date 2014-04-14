@@ -7,7 +7,6 @@ of useful functions for interacting with Reddit
 """
 
 import praw
-from var_dump import *
 
 
 class NanoReddit():

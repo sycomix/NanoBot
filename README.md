@@ -48,6 +48,7 @@ Dependencies (included)
 ------
 SleekXMPP: http://sleekxmpp.com/
 PyAIML: http://pyaiml.sourceforge.net/
+PRAW: https://praw.readthedocs.org/en/latest/ (NOT INCLUDED)
 
 
 

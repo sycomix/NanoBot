@@ -124,7 +124,7 @@ class NanoBot():
     def process_command(self, msg):
         command = msg['body'][len(self.bot_cmd_prefix):]
 
-        available_commands = ["help", "reload", "weather", "time", "define"]
+        available_commands = ["help", "reload", "weather", "time", "define <word>", "reddit <username>"]
 
         # Help
         if command.upper() == "HELP" or msg['body'].upper() == "HELP":
