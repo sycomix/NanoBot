@@ -129,7 +129,10 @@ class NanoBot():
         # Help
         if command.upper() == "HELP" or msg['body'].upper() == "HELP":
             output = "To use a "+ self.bot_name + " command, start your messages with " + self.bot_cmd_prefix + ".\n"
-            output += "Use help [command] for more details.\nCommands available: " + repr(available_commands)
+            output += "Use " + self.bot_cmd_prefix + " help [command] for more details.\nCommands available: " + repr(available_commands) + "\n"
+            output += "Example: " + self.bot_cmd_prefix + " reddit nanodano\n"
+            output += "Example: " + self.bot_cmd_prefix + " weather\n"
+            output += "Example: " + self.bot_cmd_prefix + " define gnosis \n"
             return output
 
 
