@@ -4,6 +4,14 @@ NanoBot
 **NanoBot** is a python XMPP and AIML bot framework
 
 
+
+Dependencies (Not included)
+------
+SleekXMPP: http://sleekxmpp.com/ (Available on pip)
+PRAW: https://praw.readthedocs.org/en/latest/ (Available on pip)
+PyAIML: http://pyaiml.sourceforge.net/ (git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml)
+
+
 Installation
 -----
 
@@ -41,15 +49,6 @@ License
 -----
 
 * NanoBot is licensed under the *Do What The Fuck You Want to Public License*, WTFPL. See the LICENSE.txt file.
-
-
-
-Dependencies (Not included)
-------
-SleekXMPP: http://sleekxmpp.com/
-PyAIML: http://pyaiml.sourceforge.net/
-PRAW: https://praw.readthedocs.org/en/latest/
-
 
 
 Feature list / wish list

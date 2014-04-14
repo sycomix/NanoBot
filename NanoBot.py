@@ -155,8 +155,7 @@ class NanoBot():
 
         # Dictionary
         if "DEFINE" in command.upper():
-            raw_keywords = msg['body'][3:].replace("define", "")
-            keywords = raw_keywords.strip()
+            raw_keywords = command.replace("define ", "")
             keywords = keywords.replace(" ", "%20")
             keywords = keywords.replace(":", "")
             return "Here is a link to the defition of " + raw_keywords + "  : http://www.merriam-webster.com/dictionary/" + keywords
@@ -182,10 +181,14 @@ class NanoBot():
 
     # Handle chat room join stanzas
     def muc_online(self, presence):
+        """
+        # Commenting this out to avoid MUC spam
         if presence['muc']['nick'] != self.xmpp.nick:
             self.xmpp.send_message(mto=presence['from'].bare,
                               mbody="Welcome to the dungeon, %s %s." % (presence['muc']['role'], presence['muc']['nick']),
                               mtype='groupchat')
+        """
+        return
 
 
 
