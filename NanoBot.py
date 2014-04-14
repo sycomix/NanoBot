@@ -156,7 +156,7 @@ class NanoBot():
         # Dictionary
         if "DEFINE" in command.upper():
             raw_keywords = command.replace("define ", "")
-            keywords = keywords.replace(" ", "%20")
+            keywords = raw_keywords.replace(" ", "%20")
             keywords = keywords.replace(":", "")
             return "Here is a link to the defition of " + raw_keywords + "  : http://www.merriam-webster.com/dictionary/" + keywords
 
