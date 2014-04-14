@@ -128,7 +128,10 @@ class NanoBot():
 
         # Help
         if command.upper() == "HELP" or msg['body'].upper() == "HELP":
-            return "Use help [command] for more details.\nCommands available: " + repr(available_commands)
+            output = "To use a "+ self.bot_name + " command, start your messages with " + self.bot_cmd_prefix + ".\n"
+            output += "Use help [command] for more details.\nCommands available: " + repr(available_commands)
+            return output
+
 
         # reload - AIML files reload
         if command.upper() == "RELOAD":
