@@ -10,10 +10,12 @@ from NanoXMPP import *      # Handle chat server, messages, presence
 from NanoReddit import *
 
 
-# Global config vars
+# Global config
 bot_name = "NanoBot"
 bot_master = ""
 bot_cmd_prefix = "nano " # Triggers a preprocess command in message process
+
+#AIML config 
 brain_file = "brains/standard.brn"
 std_startup_file = "std-startup.xml"
 default_load_command = "load aiml b"
@@ -43,7 +45,6 @@ class NanoBot():
 
         # Activate Reddit bot component
         self.reddit = NanoReddit()
-        self.reddit
 
 
     def run(self):

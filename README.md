@@ -24,20 +24,22 @@ Run in terminal::
 Usage
 -----
 
-Run NanoBot::
+Simple usage:
 
     $ python NanoBot
+
 
 	
 To do
 -----
 
 - Provide more robust brain file checking (exists, is writable, need updating?)
-- Store sessions to file
+- Store AIML sessions to file for persistence
 - Add status presence updates
 - Add database logging
 - Integrate external data (db:topics, keywords)
 - Add AIML++ compiler - shorthand aiml generation
+- Add AIML token replacement post-process
 - help me at https://github.com/NanoDano/NanoBot
 
 Author
