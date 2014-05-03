@@ -1,4 +1,31 @@
-#!/usr/bin/env python
+#!/usr/bin env python2
+"""
+NanoBot
+nanodano@devdungeon.com - April 2014
+
+NanoBot is an extensible chat, ai, and utility bot written in Python2. 
+
+Current modules include:
+- NanoXMPP - Communicate with the bot via XMPP
+- NanoLogic - Artificial intelligence chat provided by AIML
+- NanoReddit - Reddit bot capability provided by PRAW
+
+Adding commands should be easy and modular so people
+can share NanoBot modules with each other in a simple
+plug-and-play way. Modules should be disable gracefully
+and not break the bot if disabled or removed.
+
+Should there be core and extra modules? Or should they ALL be optional?
+Core = XMPP + AIML
+Extras = Reddit, weather, etc
+
+Implementing plugins:
+Hooks
+- process message - get a copy of the message, do something, manipulate
+- process command - create a special command and logic
+- post message - after a message is responded to - allow for logging, stats
+"""
+
 import sys
 import logging
 import getpass
@@ -9,18 +36,15 @@ from NanoLogic import *     # Command/text processing, AIML logic
 from NanoXMPP import *      # Handle chat server, messages, presence
 from NanoReddit import *
 
-
 # Global config
 bot_name = "NanoBot"
 bot_master = ""
 bot_cmd_prefix = "nano " # Triggers a preprocess command in message process
 
-#AIML config 
+#AIML config
 brain_file = "brains/standard.brn"
 std_startup_file = "std-startup.xml"
 default_load_command = "load aiml b"
-
-
 
 class NanoBot():
 
@@ -61,8 +85,6 @@ class NanoBot():
         else:
             print("Unable to connect to " + self.host + ":" + self.port + ".")
 
-
-
     def process_message(self, msg):
         """
         Process incoming chat message:
@@ -100,15 +122,9 @@ class NanoBot():
             if response != False:
                 msg.reply(response).send()
 
-
-
-
     def token_replace(self, msg):
         # Replace tokens like [username], [get_weather], [ext plug]
         return
-
-
-
 
     def log_message(self, msg, response):
         # Command line logging
@@ -118,8 +134,6 @@ class NanoBot():
 
         # Database logging
         # mysql log msg/respone, time, session
-
-
 
     # Needs to be easily extendable to import other libraries and complex functions/algorithms
     def process_command(self, msg):
@@ -136,7 +150,6 @@ class NanoBot():
             output += "Example: " + self.bot_cmd_prefix + " define gnosis \n"
             return output
 
-
         # reload - AIML files reload
         if command.upper() == "RELOAD":
             tmpmsg = msg
@@ -145,7 +158,6 @@ class NanoBot():
             msg.reply("AIML files reloaded").send()
             return "AIML files reloaded."
         
-
         # Weather
         if command.upper() == "WEATHER":
             return "Today's weather: http://www.weather.com/weather/today/77373"       
@@ -168,30 +180,24 @@ class NanoBot():
             output = self.reddit.analyze_user_karma(username)
             return output
 
-
         return False # default return
-
-
 
     # Handle chat room message
     def muc_message(self, msg):
         if msg['mucnick'] != self.xmpp.nick:
             self.process_muc_message(self, msg)
 
-
-
     # Handle chat room join stanzas
     def muc_online(self, presence):
         """
         # Commenting this out to avoid MUC spam
+        # Prints a greeting for each user on join
         if presence['muc']['nick'] != self.xmpp.nick:
             self.xmpp.send_message(mto=presence['from'].bare,
                               mbody="Welcome to the dungeon, %s %s." % (presence['muc']['role'], presence['muc']['nick']),
                               mtype='groupchat')
         """
         return
-
-
 
     # Handle muc chat messages 
     # Currently not processed by AIML
@@ -200,14 +206,12 @@ class NanoBot():
         # global message process
         # store message, who, time
 
-
         # Someone asked "How do i" or "how do you" - LMGTFY
         strings = ["HOW DO I", "HOW DO YOU", "HOW CAN I", "HOW COULD I"]
         if any (x in msg['body'].upper() for x in strings):
             self.xmpp.send_message(mto=msg['from'].bare,
                               mbody="Do you need some help? See if you can find the answer here: http://lmgtfy.com?q=" + msg['body'].replace(" ", "+"),
                               mtype='groupchat')
-
 
 
     def optp_init(self):

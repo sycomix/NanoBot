@@ -1,8 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin env python2
 
 from NanoBot import *
-
-
 
 # Global stuff
 # Enforce UTF-8
@@ -11,8 +9,6 @@ if sys.version_info < (3, 0):
     sys.setdefaultencoding('utf8')
 else:
     raw_input = input
-
-
 
 # Main function when run on the command line
 if __name__ == '__main__':

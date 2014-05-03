@@ -1,3 +1,4 @@
+#!/usr/bin env python2
 """
 NanoReddit
 nanodano@devdungeon.com
@@ -8,10 +9,7 @@ of useful functions for interacting with Reddit
 
 import praw
 
-
 class NanoReddit():
-
-
 
 	def __init__(self):
 		"""
@@ -20,8 +18,6 @@ class NanoReddit():
 		print "Initializing PRAW and User Agent"
 		user_agent = ("the_nano_bot/0.1 by nanodano@devdungeon.com")
 		self.r = praw.Reddit(user_agent=user_agent)
-
-
 
 	"""
 	Get lowest subreddit/karma combo given a dict
@@ -33,8 +29,6 @@ class NanoReddit():
 				lowest = (subreddit,karma)
 		return lowest
 
-
-
 	"""
 	Get highest subreddit/karma combo given a dict
 	"""
@@ -44,8 +38,6 @@ class NanoReddit():
 			if karma > highest[1]:
 				highest = (subreddit,karma)
 		return highest
-
-
 
 	"""
 	Analyze a user's karma
@@ -71,8 +63,6 @@ class NanoReddit():
 		output += "Lowest: " + lowest[0] + " (" + repr(lowest[1]) + ")\n"
 		output += "Highest: " + highest[0] + " (" + repr(highest[1]) + ")\n"
 		return output
-
-	
 
 """
 Main

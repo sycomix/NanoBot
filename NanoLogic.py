@@ -1,9 +1,14 @@
-#!/usr/bin/python
+#!/usr/bin env python2
+"""
+NanoLogic
+nanodano@devdungeon.com
+
+PyAIML wrapper for convenience
+"""
+
 import aiml
 import logging
 import os
-
-
 
 class NanoLogic():
 
@@ -22,15 +27,10 @@ class NanoLogic():
 
 		self.reload(default_load_command, brain_file, std_startup_file)
 		
-
-
-
 	# Process text using AIML and return response
 	# Use separate sessions based on from name
 	def aiml_process(self, msg):
 		return self.aimlk.respond(msg['body'], msg['from'].bare) 
-
-
 
 	def reload(self, load_command, brain_file, std_startup_file, force=False):
 		# Change path so that relative paths work in std-startup.xml
@@ -38,7 +38,7 @@ class NanoLogic():
 		bot_root_path = os.path.dirname(os.path.realpath(__file__))
 		if current_path != bot_root_path:
 			os.chdir(bot_root_path)
-
+		# Check for brain file else load aiml and create brain
 		if os.path.isfile(brain_file) and force == False:
 		    self.aimlk.bootstrap(brainFile = brain_file)
 		else:

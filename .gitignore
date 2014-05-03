@@ -2,3 +2,6 @@
 *.brn
 pass.txt
 mynanobot
+__pycache__
+*.sublime-project
+*.sublime-workspace
