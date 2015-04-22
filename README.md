@@ -28,6 +28,8 @@ Simple usage:
 
     $ python NanoBot
 
+Scripted usage:
+    $ python2 __main__.py -j nanobot@devdungeon.com -H devdungeon.com -n NanoBot -r speakeasy@conference.devdungeon.com -p `cat pass.txt` "$@"
 
 	
 To do

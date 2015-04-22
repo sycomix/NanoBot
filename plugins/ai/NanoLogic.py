@@ -6,15 +6,14 @@ nanodano@devdungeon.com
 PyAIML wrapper for convenience
 """
 
-import aiml
-import logging
 import os
+
 
 class NanoLogic():
 
 	def __init__(self, bot_name, bot_master, brain_file, std_startup_file, default_load_command):	
 		# Initialize AIML Kernel
-		self.aimlk = aiml.Kernel()
+		self.aimlk = plugins.ai.aiml.Kernel()
 
 		# Name/owner settings
 		self.aimlk.setBotPredicate('name', bot_name)

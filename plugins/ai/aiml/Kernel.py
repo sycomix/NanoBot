@@ -1,11 +1,5 @@
 # -*- coding: latin-1 -*-
 """This file contains the public interface to the aiml module."""
-import AimlParser
-import DefaultSubs
-import Utils
-from PatternMgr import PatternMgr
-from WordSub import WordSub
-
 from ConfigParser import ConfigParser
 import copy
 import glob
@@ -17,6 +11,12 @@ import sys
 import time
 import threading
 import xml.sax
+
+import AimlParser
+import Utils
+from PatternMgr import PatternMgr
+from WordSub import WordSub
+from plugins.ai.aiml import DefaultSubs
 
 
 class Kernel:

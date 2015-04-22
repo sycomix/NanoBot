@@ -26,15 +26,16 @@ Hooks
 - post message - after a message is responded to - allow for logging, stats
 """
 
-import sys
-import logging
 import getpass
 import time
 from optparse import OptionParser
 
-from NanoLogic import *     # Command/text processing, AIML logic
+from plugins.ai.NanoLogic import *     # Command/text processing, AIML logic
 from NanoXMPP import *      # Handle chat server, messages, presence
-from NanoReddit import *
+from plugins.reddit.NanoReddit import *
+
+
+
 
 # Global config
 bot_name = "NanoBot"
