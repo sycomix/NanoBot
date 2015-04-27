@@ -7,7 +7,8 @@ import logging
 # @TODO Add AIML
 # @TODO Load all plugins automatically
 # @TODO provide argument for plugin folder
-
+# @TODO Accept command line options
+# @TODO Rewrite so it only loads plugins ONCE instead of every request
 
 # Logging stuff
 LOG_FILENAME = 'nanobot.log.txt'
@@ -78,4 +79,9 @@ class Bot:
         factory.protocol = NanoBotProtocol
         reactor.listenTCP(8008, factory)
         reactor.run()
+
+
+if __name__ == '__main__':
+    bot = Bot()
+    bot.run()
 
