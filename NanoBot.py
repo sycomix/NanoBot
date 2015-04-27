@@ -1,23 +1,22 @@
 from twisted.internet import reactor, protocol
 import json
+import imp
+import logging
+
+# @TODO Make request/response objects instead of manually making json/stdobjs
+# @TODO Add AIML
+# @TODO Load all plugins automatically
+# @TODO provide argument for plugin folder
 
 
-class Bot:
-    """
-    Server that loads all plugins then listens and responds on TCP
-    """
-    def __init__(self):
-        return
-
-    def run(self):
-        print("Listening")
-        factory = protocol.ServerFactory()
-        factory.protocol = Kernel
-        reactor.listenTCP(8008, factory)
-        reactor.run()
+# Logging stuff
+LOG_FILENAME = 'nanobot.log.txt'
+logging.basicConfig(filename=LOG_FILENAME,
+                    level=logging.DEBUG,
+                    )
 
 
-class Kernel(protocol.Protocol):
+class NanoBotProtocol(protocol.Protocol):
     """
     Twisted protocol that handles incoming connection data
     and passes it to all plugins
@@ -27,6 +26,7 @@ class Kernel(protocol.Protocol):
         """
         Constructor
         """
+        logging.info('Initializing Kernel')
         self.plugins = dict()
         self.load_all_plugins()
 
@@ -38,27 +38,44 @@ class Kernel(protocol.Protocol):
         plugin_list = ["MyModule"]
 
         #plugin_list = filenames in folder "./plugins/"
-
+        logging.info('Loading MyModule')
+        module = imp.load_source('MyModule', '/home/dtron/workspace/NanoBot/plugins/MyModule/MyModule.py')
+        self.plugins['MyModule'] = module.MyModule()
+        logging.info('Finished Loading MyModule')
         # Load all plugins
-        for plugin_name in plugin_list:
+        #for plugin_name in plugin_list:
             # Load module
-            self.plugins[plugin_name] = globals()[plugin_name]()
-
+         #   self.plugins[plugin_name] = globals()[plugin_name]()
 
     def dataReceived(self, data):
         """
         # decode JSON data and pass data to each plugin
         """
-        # Turn JSON input in to object
-        data = json.loads(data)
+        # Load received data
+        data = json.loads(data.decode('UTF-8'))
 
         # Process data with each plugin
         for name in self.plugins:
-            print(name)
             response = self.plugins[name].process(data)
             # Break on first response
             if response:
                 break
 
-        # Send response back over wire
-        self.transport.write(json.dumps(response))
+        # Send response back
+        self.transport.write(json.dumps(response).encode('UTF-8'))
+
+
+class Bot:
+    """
+    Server that loads all plugins then listens and responds on TCP
+    """
+    def __init__(self):
+        return
+
+    def run(self):
+        logging.info('Starting NanoBot')
+        factory = protocol.ServerFactory()
+        factory.protocol = NanoBotProtocol
+        reactor.listenTCP(8008, factory)
+        reactor.run()
+

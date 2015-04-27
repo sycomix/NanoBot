@@ -9,6 +9,7 @@ host = socket.gethostname()  # 'localhost' #
 port = 8008
 s.connect((host, port))
 
-s.send(bytes(msg, 'UTF-8'))
+#s.send(bytes(msg, 'UTF-8'))
+s.send(bytes("{\"test\":12}\r\n", 'UTF-8'))
 
 s.close()
