@@ -48,17 +48,17 @@ Contact
 
 Feature list / wish list
 -----
-most used words, word length, longest word, messages per day
-lmgtfy
-Reddit commands
-Fortune cookie
-Horoscope
-Dictionary
-Flight status
-RSS alert
-Riddles
-Alarms/Timer
-Weather
-Stocks
-Wikipedia search
-Wolfram|Alpha
+* most used words, word length, longest word, messages per day
+* lmgtfy
+* Reddit commands
+* Fortune cookie
+* Horoscope
+* Dictionary
+* Flight status
+* RSS alert
+* Riddles
+* Alarms/Timer
+* Weather
+* Stocks
+* Wikipedia search
+* Wolfram|Alpha
