@@ -1,22 +1,21 @@
 NanoBot
 =====
 
-**NanoBot** is a python XMPP and AIML bot framework
-
-
+**NanoBot** is an artificial intelligence chat bot. It is written in Python and uses the XMPP protocol. It can be extended to add custom commands and other features.
 
 Dependencies (Not included)
 ------
-SleekXMPP: http://sleekxmpp.com/ (Available on pip)
-PRAW: https://praw.readthedocs.org/en/latest/ (Available on pip)
-PyAIML: http://pyaiml.sourceforge.net/ (git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml)
 
+* SleekXMPP: http://sleekxmpp.com/
+* PRAW: https://praw.readthedocs.org/en/latest/
+* PyAIML: http://pyaiml.sourceforge.net/
 
 Installation
 -----
 
 Run in terminal::
 
+	$ pip install sleekxmpp aiml praw
 	$ git clone https://github.com/NanoDano/NanoBot
 	$ python NanoBot
 
@@ -29,9 +28,9 @@ Simple usage:
     $ python NanoBot
 
 Scripted usage:
+
     $ python2 __main__.py -j nanobot@devdungeon.com -H devdungeon.com -n NanoBot -r speakeasy@conference.devdungeon.com -p `cat pass.txt` "$@"
 
-	
 To do
 -----
 
@@ -40,70 +39,26 @@ To do
 - Add status presence updates
 - Add database logging
 - Integrate external data (db:topics, keywords)
-- Add AIML++ compiler - shorthand aiml generation
 - Add AIML token replacement post-process
-- help me at https://github.com/NanoDano/NanoBot
 
-Author
+Contact
 -----
 
 * NanoDano <nanodano@devdungeon.com>
 
-License
------
-
-* NanoBot is licensed under the *Do What The Fuck You Want to Public License*, WTFPL. See the LICENSE.txt file.
-
-
 Feature list / wish list
 -----
-10 second trivia
-who else are you talking to
-what have you learned today?
-private tells / store until online
-Link previewer: Link detected: Title: - mime/type + size
 most used words, word length, longest word, messages per day
-[my|user] link post history
 lmgtfy
-teach/learn command
-reddit bot
-"reddit help"
-"reddit karma nanodano"
-"reddit postcount nanodano"
-fortune cookie
-horoscope
-translate
-chat
-weather
-word definition
-word rhyme
-flight status
+Reddit commands
+Fortune cookie
+Horoscope
+Dictionary
+Flight status
 RSS alert
-bookmarks
-riddles
-games
-Music
-Mail
-Messages
-Calendar
-Reminders
-Notes
-Contacts
-Alarms
-World Clock
-Timer
+Riddles
+Alarms/Timer
 Weather
 Stocks
-Web search
 Wikipedia search
-Wolfram|Alpha (English only)
-Find My Friends
-Post on Facebook
-Twitter
-Movies
-Sports
-App launch
-Maps
-Local search
-search kat.ph (TORRENTS)
-search yelp
+Wolfram|Alpha
